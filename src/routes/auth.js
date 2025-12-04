@@ -28,6 +28,10 @@ authRouter.post("/signup",async(req,res)=>
 const saveuser = await user.save();
  const token= await jwt.sign({_id:saveuser._id},"Navya@9985",{expiresIn:"1d"});
  res.cookie("token",token,{
+    httpOnly:true,
+    secure:true,
+    sameSite:"none",
+    path:"/",
 expiresIn:new Date(Date.now + 8*3600000)
                 });;
 
@@ -78,6 +82,10 @@ authRouter.post("/logout",async(req,res)=>
 {
     try{
     res.cookie("token",null,{
+        httpOnly:true,
+    secure:true,
+    sameSite:"none",
+    path:"/",
         expires:new Date(Date.now())
     });
     res.send("logout successfully");
