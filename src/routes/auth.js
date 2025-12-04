@@ -32,7 +32,7 @@ const saveuser = await user.save();
     secure:true,
     sameSite:"none",
     path:"/",
-expires:new Date(Date.now + 8*3600000)
+expiresIn:new Date(Date.now + 8*3600000)
                 });;
 
 res.send(saveuser);
@@ -67,7 +67,7 @@ authRouter.post("/login",async(req,res)=>
                       secure:true,
                       sameSite:"none",
                       path:"/",
-                    expires:new Date(Date.now + 8*3600000)
+                    expiresIn:new Date(Date.now + 8*3600000)
                 });;
             res.send(user);
         
@@ -86,10 +86,6 @@ authRouter.post("/logout",async(req,res)=>
 {
     try{
     res.cookie("token",null,{
-        httpOnly:true,
-    secure:true,
-    sameSite:"none",
-    path:"/",
    expires:new Date(Date.now())
     });
     res.send("logout successfully");
