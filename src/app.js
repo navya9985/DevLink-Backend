@@ -15,7 +15,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(cookieparser());
 app.use(cors({
-    origin:"http://localhost:5176",
+    origin:"https://devlink-frontend-lxmp.onrender.com",
     credentials:true,
 }));
 
